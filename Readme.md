@@ -1,0 +1,1 @@
+Kindly serve the html from a live server as webworker cannot be accessed from local

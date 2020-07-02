@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Avaamo Assignment - Santhosh S Kashyap</title>
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+
+<div id="bottom">
+    <pre id="json">Analysing</pre>
+</div>
+
+<script>
+      document.addEventListener("DOMContentLoaded", function(event) {
+        if(window.Worker){
+            const myWorker = new Worker("worker.js");
+            myWorker.postMessage("startPRocess");
+            myWorker.onmessage = function(e){
+                let result = e.data.result;
+                document.getElementById("json").textContent = JSON.stringify(result, undefined, 2)
+
+            }
+        }else{
+            console.log("Web Worker Not Supported")
+        }
+    })
+
+
+</script>
+</body>
+</html>
